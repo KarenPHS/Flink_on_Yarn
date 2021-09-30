@@ -1,0 +1,177 @@
+version: "3.0"
+services:
+    Active-NN:
+        container_name: active-nn
+        image: hsuan8169/hadoopha
+        user: root
+        privileged: true
+        networks:
+            - Hadoop_Cluster
+        hostname: active-nn
+        ports:
+            - 9870:9870
+            - 10002:10002
+        command: bash -c "service ssh restart && sleep infinity"
+    
+    Standby-NN:
+        container_name: standby-nn
+        image: hsuan8169/hadoopha
+        user: root
+        privileged: true
+        networks:
+            - Hadoop_Cluster
+        hostname: standby-nn
+        ports:
+            - 9871:9870
+        command: bash -c "service ssh restart && sleep infinity"
+
+    Active-RM:
+        container_name: active-rm
+        image: hsuan8169/hadoopha
+        user: root
+        privileged: true
+        networks:
+            - Hadoop_Cluster
+        hostname: active-rm
+        ports:
+            - 8088:8088
+        command: bash -c "service ssh restart && sleep infinity"
+        
+    Standby-RM:
+        container_name: standby-rm
+        image: hsuan8169/hadoopha
+        user: root
+        privileged: true
+        networks:
+            - Hadoop_Cluster
+        hostname: standby_rm
+        ports:
+            - 8089:8088
+        command: bash -c "service ssh restart && sleep infinity"
+        
+    
+    HistorySever:
+        container_name: historyserver
+        image: hsuan8169/hadoopha
+        user: root
+        privileged: true
+        networks:
+            - Hadoop_Cluster
+        hostname: historyserver
+        ports:
+            - 19888:19888
+        command: bash -c "service ssh restart && sleep infinity"
+    
+    JournalNode1:
+        container_name: journalnode1
+        image: hsuan8169/journalnode
+        user: root
+        privileged: true
+        networks:
+            - Hadoop_Cluster
+        hostname: journalnode1
+        ports:
+            - 8480:8480
+        command: bash -c "service ssh restart && sleep infinity"
+    
+    JournalNode2:
+        container_name: journalnode2
+        image: hsuan8169/journalnode
+        user: root
+        privileged: true
+        networks:
+            - Hadoop_Cluster
+        hostname: journalnode2
+        ports:
+            - 8481:8480
+        command: bash -c "service ssh restart && sleep infinity"
+    
+    JournalNode3:
+        container_name: journalnode3
+        image: hsuan8169/journalnode
+        user: root
+        privileged: true
+        networks:
+            - Hadoop_Cluster
+        hostname: journalnode3
+        ports:
+            - 8482:8480
+        command: bash -c "service ssh restart && sleep infinity"
+        
+    
+    ZNode1:
+        container_name: znod1
+        image: hsuan8169/znode1
+        user: root
+        privileged: true
+        networks:
+            - Hadoop_Cluster
+        hostname: znode1
+        command: bash -c "service ssh restart && sleep infinity"
+    
+    ZNode2:
+        container_name: znode2
+        image: hsuan8169/znode2
+        user: root
+        privileged: true
+        networks:
+            - Hadoop_Cluster
+        hostname: znode2
+        command: bash -c "service ssh restart && sleep infinity"
+    
+    ZNode3:
+        container_name: znode3
+        image: hsuan8169/znode3
+        user: root
+        privileged: true
+        networks:
+            - Hadoop_Cluster
+        hostname: znode3
+        command: bash -c "service ssh restart && sleep infinity"
+
+    Flink:
+        container_name: flink
+        image: hsuan8169/flink
+        user: root
+        privileged: true
+        networks:
+            - Hadoop_Cluster
+        hostname: flink
+        ports:
+            - 8482:8480
+        command: bash -c "service ssh restart && sleep infinity"
+        
+    Worker1:
+        container_name: worker1
+        image: hsuan8169/workers
+        user: root
+        privileged: true
+        networks:
+            - Hadoop_Cluster
+        hostname: worker1
+        command: bash -c "service ssh restart && sleep infinity"
+
+    Worker2:
+        container_name: worker2
+        image: hsuan8169/workers
+        user: root
+        privileged: true
+        networks:
+            - Hadoop_Cluster
+        hostname: worker2
+        command: bash -c "service ssh restart && sleep infinity"
+
+    Worker3:
+        container_name: worker3
+        image: hsuan8169/workers
+        user: root
+        privileged: true
+        networks:
+            - Hadoop_Cluster
+        hostname: worker3
+        command: bash -c "service ssh restart && sleep infinity"
+    
+
+networks:
+    Hadoop_Cluster:
+        driver: bridge
