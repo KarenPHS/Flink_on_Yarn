@@ -100,7 +100,7 @@ services:
         
     
     ZNode1:
-        container_name: znod1
+        container_name: znode1
         image: hsuan8169/znode1
         user: root
         privileged: true
