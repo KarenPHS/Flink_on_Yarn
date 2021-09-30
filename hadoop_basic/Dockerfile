@@ -26,7 +26,7 @@ HADOOP_HOME=/usr/local/hadoop\n\
 # Set HADOOP_MAPRED_HOME\n\
 HADOOP_MAPRED_HOME=${HADOOP_HOME}\n\
 # Add Hadoop bin and sbin directory to PATH\n\
-PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin'
+PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin' >> /root/.bashrc && source /root/.bashrc
 
 # Set hadoop-env.sh
 RUN sed -i '55s@.*@export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64@g' /usr/local/hadoop/etc/hadoop/hadoop-env.sh
@@ -51,6 +51,7 @@ worker2\n\
 worker3' > /usr/local/hadoop/etc/hadoop/workers
 
 # Set core-site.xml, mapred-site.xml, yarn-site.xml, hdfs-site.xml
+COPY ./hdfs-site.xml /usr/local/hadoop/etc/hadoop/hdfs-site.xml
 COPY ./core-site.xml /usr/local/hadoop/etc/hadoop/core-site.xml
 COPY ./mapred-site.xml /usr/local/hadoop/etc/hadoop/mapred-site.xml
 COPY ./yarn-site.xml /usr/local/hadoop/etc/hadoop/yarn-site.xml
