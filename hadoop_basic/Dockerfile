@@ -26,7 +26,7 @@ HADOOP_HOME=/usr/local/hadoop\n\
 # Set HADOOP_MAPRED_HOME\n\
 HADOOP_MAPRED_HOME=${HADOOP_HOME}\n\
 # Add Hadoop bin and sbin directory to PATH\n\
-PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin\n\
+PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
 
 # Set hadoop-env.sh
 RUN sed -i '55s@.*@export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64@g' /usr/local/hadoop/etc/hadoop/hadoop-env.sh
