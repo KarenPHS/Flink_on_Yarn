@@ -129,17 +129,7 @@ services:
         hostname: znode3
         command: bash -c "service ssh restart && sleep infinity"
 
-    Flink:
-        container_name: flink
-        image: hsuan8169/flink
-        user: root
-        privileged: true
-        networks:
-            - Hadoop_Cluster
-        hostname: flink
-        ports:
-            - 8482:8480
-        command: bash -c "service ssh restart && sleep infinity"
+
         
     Worker1:
         container_name: worker1
