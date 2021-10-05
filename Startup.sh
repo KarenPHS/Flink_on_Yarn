@@ -35,11 +35,6 @@ echo "Stoping NN on active-nn..."
 docker exec -i active-nn /bin/bash -c "/usr/local/hadoop/bin/hdfs --daemon stop namenode"
 sleep 2
 
-# [Journal stop]
-echo "Stoping all Journalnode"
-docker exec -i journalnode1 /bin/bash -c  "/usr/local/hadoop/bin/hdfs --daemon stop journalnode" && docker exec -i journalnode2 /bin/bash -c  "/usr/local/hadoop/bin/hdfs --daemon stop journalnode" && docker exec -i journalnode3 /bin/bash -c  "/usr/local/hadoop/bin/hdfs --daemon stop journalnode"
-sleep 2
-
 # [All NN start]
 echo "Starting NN & workers and then conneting to "
 docker exec -i active-nn /bin/bash -c "/usr/local/hadoop/sbin/start-dfs.sh"

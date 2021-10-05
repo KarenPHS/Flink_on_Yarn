@@ -23,3 +23,7 @@ cd ..
 cd ./Zookeeper3
 docker image build -t hsuan8169/znode3 . --no-cache
 cd ..
+
+cd ./Flink
+docker image build -t hsuan8169/flink . --no-cache
+cd ..

@@ -156,6 +156,18 @@ services:
             - Hadoop_Cluster
         hostname: worker3
         command: bash -c "service ssh restart && sleep infinity"
+        
+    Flink:
+        container_name: flink
+        image: hsuan8169/flink
+        user: root
+        privileged: true
+        networks:
+            - Hadoop_Cluster
+        hostname: flink
+        ports:
+            - 8082:8082
+        command: bash -c "service ssh restart && sleep infinity"
     
 networks:
     Hadoop_Cluster:
