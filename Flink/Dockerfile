@@ -11,7 +11,7 @@ FLINK_HOME=/usr/local/flink\n\
 # Add Hadoop bin and sbin directory to PATH\n\
 export PATH=$PATH:$FLINK_HOME/bin\n\
 # Add HADOOP_CLASSPATH\n\
-export HADOOP_CLASSPATH=hadoop classpath' >> /root/.bashrc && source /root/.bashrc
+export HADOOP_CLASSPATH=$(find $HADOOP_HOME -name '*.jar' | xargs echo | tr ' ' ':')' >> /root/.bashrc && source /root/.bashrc
 
 # Set flink-conf.yaml
 COPY ./flink-conf.yaml /usr/local/flink/conf/flink-conf.yaml
